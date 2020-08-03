@@ -1,5 +1,5 @@
-# bot-auto-send-gmail
-bot auto send gmail
+# bot-auto-send-and-receive-gmail
+bot-auto-send-and-receive-gmail
 
 
 There are several step, you neeed follow to ensure everything will work correctly
