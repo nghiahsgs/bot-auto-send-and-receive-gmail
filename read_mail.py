@@ -5,10 +5,18 @@ import email
 from email.header import decode_header
 import webbrowser
 import os
+import io
+from slugify import slugify
+
+def write_file(file_name,ndung):
+    f = io.open(file_name, 'w', encoding='utf-8')
+    f.write(ndung)
+    f.close()
+
 
 # account credentials
-username  = 'duonghongvan5585@gmail.com'
-password = 'GPbbftupl23818'
+username  = 'nghiahsgs'
+password = 'nghia261997n'
 
 # create an IMAP4 class with SSL 
 imap = imaplib.IMAP4_SSL("imap.gmail.com")
@@ -74,13 +82,14 @@ for i in range(messages, messages-N, -1):
                     print(body)
             if content_type == "text/html":
                 # if it's HTML, create a new HTML file and open it in browser
+                subject=slugify(subject)
                 if not os.path.isdir(subject):
                     # make a folder for this email (named after the subject)
                     os.mkdir(subject)
                 filename = f"{subject[:50]}.html"
                 filepath = os.path.join(subject, filename)
                 # write the file
-                open(filepath, "w").write(body)
+                write_file(filepath,body)
                 # open in the default browser
                 webbrowser.open(filepath)
 
